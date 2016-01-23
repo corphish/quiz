@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include <log.h>
 #include <quiz.h>
 
@@ -45,4 +46,20 @@ void quiz::get_answer_from_user() {
 void quiz::print_round() {
 	logi(LOG_TAG,"print_round!!");
 	cout << get_question() << endl << "A. "<< get_options(0) << " B. " << get_options(1) <<  " C. " << get_options(2) << " D. "<< get_options(3) << endl;
+}
+
+void quiz::set_question(char c[]) {
+	strcpy(question,c);
+}
+
+void quiz::set_option(char c[], int index) {
+	strcpy(options[index],c);
+}
+
+void quiz::set_key(int k) {
+	key = k;
+}
+
+void quiz::set_difficulty(int d) {
+	difficulty = d;
 }
