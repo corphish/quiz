@@ -39,13 +39,13 @@ void quiz::get_answer_from_user() {
 	logi(LOG_TAG,"get_answer_from_user!!");
 	cout << "Your choice (A/B/C/D) :";
 	cin >> c;
-	check_answer((int)(c - 65));
+	check_answer((int)(c - 64));
 
 }
 
 void quiz::print_round() {
 	logi(LOG_TAG,"print_round!!");
-	cout << get_question() << endl << "A. "<< get_options(0) << " B. " << get_options(1) <<  " C. " << get_options(2) << " D. "<< get_options(3) << endl;
+	cout << get_question() << endl << "A. "<< get_options(0) << "\nB. " << get_options(1) <<  "\nC. " << get_options(2) << "\nD. "<< get_options(3) << endl;
 }
 
 void quiz::set_question(char c[]) {
