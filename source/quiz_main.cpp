@@ -28,6 +28,10 @@ int quiz::get_difficulty() {
 	return difficulty;
 }
 
+int quiz::number_of_elements() {
+		return 4;
+	}
+
 void quiz::get_answer_from_user() {
 	char c;
 	
@@ -41,9 +45,4 @@ void quiz::get_answer_from_user() {
 void quiz::print_round() {
 	logi(LOG_TAG,"print_round!!");
 	cout << get_question() << endl << "A. "<< get_options(0) << " B. " << get_options(1) <<  " C. " << get_options(2) << " D. "<< get_options(3) << endl;
-}
-
-int main() {
-	logi("quiz_main","start");
-	return 0;
 }
