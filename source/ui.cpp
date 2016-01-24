@@ -20,6 +20,14 @@ void ui_help() {
 	getch();
 }
 
+extern void ui_error() {
+	logi(LOG_TAG,"Entered ui_help!");
+	clrscr();
+	banner();
+	cout << "ERROR:\n\tFatal error. Could not start up the game. Exiting.";
+	getch();
+}
+
 extern void ui_main () {
 	logi(LOG_TAG,"Entered ui_main!");
 	int choice = 0;
