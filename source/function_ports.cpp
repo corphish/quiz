@@ -9,5 +9,6 @@ extern void clrscr () {
 
 extern char getch() {
 	int ch = std::cin.get();
+	ch = std::cin.get();
 	return (char)ch;
 }
