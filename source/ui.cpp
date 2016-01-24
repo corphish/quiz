@@ -21,7 +21,7 @@ void ui_help() {
 }
 
 extern void ui_error() {
-	logi(LOG_TAG,"Entered ui_help!");
+	logi(LOG_TAG,"Entered ui_error!");
 	clrscr();
 	banner();
 	cout << "ERROR:\n\tFatal error. Could not start up the game. Exiting.";
