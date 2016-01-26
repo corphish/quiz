@@ -1,6 +1,7 @@
 #include <iostream>
 #include <functions.h>
 #include <log.h>
+#include <game.h>
 
 #define LOG_TAG "UI"
 
@@ -25,6 +26,20 @@ extern void ui_error() {
 	clrscr();
 	banner();
 	cout << "ERROR:\n\tFatal error. Could not start up the game. Exiting.";
+	getch();
+}
+
+void ui_set_difficulty() {
+	logi(LOG_TAG,"Entered ui_set_difficulty!");
+	int choice = 0;
+	clrscr();
+	banner();
+	cout<< "Choose Difficulty :\n1. Easy\n2. Medium\n3. Hard\nYour choice (1-3) : ";
+	cin >> choice;
+	if(check_and_set_difficulty(choice))
+		cout << "Invalid input! Setting difficulty to easy. Good Luck!!";
+	else
+		cout << "Good luck!";
 	getch();
 }
 

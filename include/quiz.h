@@ -25,5 +25,4 @@ class quiz {
 	
 	//for file IO
 	int number_of_elements();
-	
 };
