@@ -52,10 +52,11 @@ extern void ui_main () {
 		cout << "1. Play QUIZ\n2. Help\n3. Exit\nYour choice (1-3) : "; 
 		cin >> choice;
 		if(choice == 1) {
-			
+			ui_set_difficulty();
 		} else if(choice == 2) {
 			ui_help();
 		} else if(choice != 3 ) {
+			loge(LOG_TAG,"main: Invalid user input.");
 			cout << "Invalid input. Try again!!";
 			getch();
 		}
