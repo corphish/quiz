@@ -3,8 +3,12 @@
 #include <log.h>
 #include <quiz.h>
 #include <stdio.h>
+#include <fstream>
+
+using namespace std;
 
 #define LOG_TAG "Game"
+char log_msg[128];
 
 int game_difficulty = 1;
 int game_score = 0;
@@ -51,15 +55,12 @@ int update_score(int type) {
 }
 
 int qfile_total_questions() {
-	int count = 0;
+	int count = 0;	
 	quiz q;
-	FILE *qfile;
-	qfile = fopen("qfile.bin","r");
-	while(!qfile) {
-		fread(&q,sizeof(quiz),q.number_of_elements(),qfile);
+	ifstream f("qfile.bin",ios::binary);
+	while(f.read((char*)&q,sizeof(quiz))) {
 		count++;
 	}
-	
 	return count;
 }
 
@@ -76,5 +77,7 @@ extern void get_question() {
 extern void game_init() {
 	logi(LOG_TAG,"Initializing game");
 	total_questions = qfile_total_questions();
+	sprintf(log_msg,"Total no. of quiz questions : %d",total_questions);
+	logi(LOG_TAG,log_msg);
 }
 

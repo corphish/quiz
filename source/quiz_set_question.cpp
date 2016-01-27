@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <fstream>
 #include <iostream>
 #include <log.h>
 #include <quiz.h>
@@ -11,16 +12,15 @@ using namespace std;
 	Write questions and various other stuff with a separate executable.*/
 	
 void write_to_file(quiz new_quiz_input) {
-	FILE *qfile;
-	if(!qfile) {
+	ofstream f("qfile.bin",ios::binary | ios::app | ios::out);
+	if(!f) {
 		loge(LOG_TAG,"Could not open file for writing. Exiting!");
 		return;
 	} else {
 		logi(LOG_TAG,"Starting file write");
 	}
-	qfile = fopen("qfile.bin","ab");
-	fwrite(&new_quiz_input,sizeof(new_quiz_input),new_quiz_input.number_of_elements(),qfile);
-	fclose(qfile);	
+	f.write((char*)&new_quiz_input,sizeof(new_quiz_input));
+	f.close();	
 }
 
 quiz get_user_input() {
