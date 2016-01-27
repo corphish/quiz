@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Iinclude -c -g -w
+CFLAGS = -Iinclude -c -g -w -fpermissive
 
 all:	
 	@make quiz
