@@ -3,6 +3,7 @@
 
 #include <ui.h>
 #include <log.h>
+#include <game.h>
 
 #define LOG_TAG "Main"
 
@@ -31,6 +32,7 @@ void init() {
 	} else 
 		logi(LOG_TAG,"qfile found!");
 	logi(LOG_TAG,"Starting up UI");
+	game_init();
 	ui_main();
 	
 }
