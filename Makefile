@@ -7,11 +7,11 @@ all:
 	@make question_set_full
 	
 quiz: source/quiz_main.cpp source/log.cpp source/main.cpp
-	@$(CC) $(CFLAGS) -o intermediates/main.obj source/main.cpp
+	@$(CC) $(CFLAGS) -o intermediates/main.obj source/main.cpp	
+	@$(CC) $(CFLAGS) -o intermediates/game.obj source/game.cpp
 	@$(CC) $(CFLAGS) -o intermediates/log.obj source/log.cpp
 	@$(CC) $(CFLAGS) -o intermediates/quiz.obj source/quiz_main.cpp
 	@$(CC) $(CFLAGS) -o intermediates/ui.obj source/ui.cpp
-	@$(CC) $(CFLAGS) -o intermediates/game.obj source/game.cpp
 	@$(CC) $(CFLAGS) -o intermediates/functions.obj source/function_ports.cpp
 
 

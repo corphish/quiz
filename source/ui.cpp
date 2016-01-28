@@ -44,15 +44,22 @@ void ui_set_difficulty() {
 }
 
 extern void ui_main () {
-	logi(LOG_TAG,"Entered ui_main!");
 	int choice = 0;
 	while(choice != 3) {
+		logi(LOG_TAG,"Entered ui_main!");
 		clrscr();
 		banner();
 		cout << "1. Play QUIZ\n2. Help\n3. Exit\nYour choice (1-3) : "; 
 		cin >> choice;
 		if(choice == 1) {
 			ui_set_difficulty();
+			clrscr();
+			banner();
+			while(return_round()) {
+				getch();
+				clrscr();
+				banner();
+			}
 		} else if(choice == 2) {
 			ui_help();
 		} else if(choice != 3 ) {

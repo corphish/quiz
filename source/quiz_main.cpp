@@ -2,6 +2,7 @@
 #include <string.h>
 #include <log.h>
 #include <quiz.h>
+#include <game.h>
 
 using namespace std;
 
@@ -39,8 +40,13 @@ void quiz::get_answer_from_user() {
 	logi(LOG_TAG,"get_answer_from_user!!");
 	cout << "Your choice (A/B/C/D) :";
 	cin >> c;
-	check_answer((int)(c - 64));
-
+	if(check_answer((int)(c - 64))) {
+		cout << "Correct Answer!\n";
+		//update_score(1);
+	} else {
+		cout << "Wrong Answer!\n";
+		//update_score(0);
+	}
 }
 
 void quiz::print_round() {
