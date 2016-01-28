@@ -16,7 +16,7 @@ int game_score = 0;
 int total_questions;
 int used_ids[100];
 
-quiz game_quiz[60];
+quiz game_quiz[60],new_quiz[60];
 
 extern int check_and_set_difficulty (int new_difficulty) {
 	if(new_difficulty == 1) {
@@ -36,6 +36,19 @@ extern int check_and_set_difficulty (int new_difficulty) {
 		loge(LOG_TAG,"Invalid difficulty setting! Using default");
 		return 1;
 	}
+}
+
+void sort_questions() {
+	logi(LOG_TAG,"Sorting questions based on difficulty");
+	int i = 0,j = 0;
+	for(i ; i < total_questions; i++) {
+		if(game_quiz[i].get_difficulty() <= game_difficulty) {
+			new_quiz[j] = game_quiz[i];
+			j++;
+		}
+	}
+	sprintf(log_msg,"Sorted questions based on difficulty! New count : %d",j);
+	logi(LOG_TAG,log_msg);
 }
 
 int get_game_difficulty() {
