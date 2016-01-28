@@ -31,8 +31,8 @@ void init() {
 			exit(0);
 	} else 
 		logi(LOG_TAG,"qfile found!");
+	if(game_init()) exit(0);	
 	logi(LOG_TAG,"Starting up UI");
-	game_init();
 	ui_main();
 	
 }

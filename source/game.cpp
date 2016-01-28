@@ -16,6 +16,8 @@ int game_score = 0;
 int total_questions;
 int used_ids[100];
 
+quiz game_quiz[60];
+
 extern int check_and_set_difficulty (int new_difficulty) {
 	if(new_difficulty == 1) {
 		logi(LOG_TAG,"Setting difficulty to easy");
@@ -54,11 +56,10 @@ int update_score(int type) {
 		game_score -= 10;
 }
 
-int qfile_total_questions() {
-	int count = 0;	
-	quiz q;
+int load_questions() {
+	int count = 0;
 	ifstream f("qfile.bin",ios::binary);
-	while(f.read((char*)&q,sizeof(quiz))) {
+	while(f.read((char*)&game_quiz[count],sizeof(quiz))) {
 		count++;
 	}
 	return count;
@@ -74,10 +75,16 @@ extern void get_question() {
 	}
 }
 
-extern void game_init() {
+extern int game_init() {
 	logi(LOG_TAG,"Initializing game");
-	total_questions = qfile_total_questions();
-	sprintf(log_msg,"Total no. of quiz questions : %d",total_questions);
-	logi(LOG_TAG,log_msg);
+	if(total_questions = load_questions()) {
+		sprintf(log_msg,"Total no. of quiz questions : %d",total_questions);
+		logi(LOG_TAG,log_msg);
+	} else {
+		loge(LOG_TAG,"Empty/Corrupted qfile. Exiting!!");
+		return 1;
+	}
+	logi(LOG_TAG,"Successfull initialization");
+	return 0;
 }
 
