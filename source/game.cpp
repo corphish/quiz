@@ -15,6 +15,8 @@ char log_msg[128];
 int game_difficulty = 1;
 int game_score = 0;
 
+int temp_count = 0;
+
 int total_questions, total_sorted_questions;
 static int used_ids[60];
 int used_id_count = 0, used_q_count = 0;
@@ -48,6 +50,18 @@ extern int check_and_set_difficulty (int new_difficulty) {
 	
 }
 
+
+extern int update_score(int type) {
+	/*type - Determines whether user has given correct answer or not, then update score accordingly.
+			 0 - Wrong Answer
+			 1 - Correct Answer*/
+	logi(LOG_TAG,"Updating Score");
+	if(type)
+		game_score += 25;
+	else
+		game_score -= 10;
+}
+
 void sort_questions() {
 	logi(LOG_TAG,"Sorting questions based on difficulty");
 	int i = 0,j = 0;
@@ -72,7 +86,7 @@ unsigned int gen_rand_numbers() {
 int is_rand_available(int num) {
 	int i;
 	for(i = 0; i < used_id_count; i++) {
-		if(used_ids[i] == num)
+		if(used_ids[i] == num && temp_count < total_sorted_questions)
 			return 1;		
 	}
 	return 0;
@@ -86,31 +100,34 @@ extern int return_round() {
 	while(is_rand_available(temp)) {
 		temp = gen_rand_numbers();
 	}
+	temp_count++;
 	sprintf(log_msg,"Putting question no. %d", temp);
 	logi(LOG_TAG,log_msg);
 	used_q_count++;
 	new_quiz[temp].print_round();
-	new_quiz[temp].get_answer_from_user();
+	if(new_quiz[temp].get_answer_from_user())
+		update_score(1);
+	else
+		update_score(0);
 	return 1;
+}
+
+extern void destroy_game() {
+	logi(LOG_TAG,"Destroy!");
+	used_id_count = 0;
+	temp_count = 0;
+	game_score = 0;
+	used_q_count = 0;
 }
 
 int get_game_difficulty() {
 	return game_difficulty;
 }
 
-int get_score() {
+extern int get_score() {
 	return game_score;
 }
 
-extern int update_score(int type) {
-	/*type - Determines whether user has given correct answer or not, then update score accordingly.
-			 0 - Wrong Answer
-			 1 - Correct Answer*/
-	if(type)
-		game_score += 25;
-	else
-		game_score -= 10;
-}
 
 int load_questions() {
 	int count = 0;

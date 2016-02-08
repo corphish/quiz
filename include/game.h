@@ -5,3 +5,5 @@ int check_and_set_difficulty(int new_difficulty);
 int game_init();
 int return_round();
 int update_score(int);
+void destroy_game();
+int get_score();
