@@ -29,6 +29,14 @@ extern void ui_error() {
 	getch();
 }
 
+void ui_score() {
+	logi(LOG_TAG,"Entered ui_score!");
+	clrscr();
+	banner();
+	cout << "Game Over :\n\tYour score - " << get_score() <<"\n\nPress any key to continue...";
+	getch();
+}
+
 void ui_set_difficulty() {
 	logi(LOG_TAG,"Entered ui_set_difficulty!");
 	int choice = 0;
@@ -60,6 +68,8 @@ extern void ui_main () {
 				clrscr();
 				banner();
 			}
+			ui_score();
+			destroy_game();
 		} else if(choice == 2) {
 			ui_help();
 		} else if(choice != 3 ) {
