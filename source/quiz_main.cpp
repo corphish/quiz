@@ -34,7 +34,7 @@ int quiz::number_of_elements() {
 		return 4;
 	}
 
-void quiz::get_answer_from_user() {
+int quiz::get_answer_from_user() {
 	char c;
 	
 	logi(LOG_TAG,"get_answer_from_user!!");
@@ -42,10 +42,10 @@ void quiz::get_answer_from_user() {
 	cin >> c;
 	if(check_answer((int)(c - 64))) {
 		cout << "Correct Answer!\n";
-		//update_score(1);
+		return 1;
 	} else {
 		cout << "Wrong Answer!\n";
-		//update_score(0);
+		return 0;
 	}
 }
 

@@ -15,7 +15,7 @@ class quiz {
 	void print_round();
 	
 	//for input from user
-	void get_answer_from_user();
+	int get_answer_from_user();
 	
 	//for write operation by the host
 	void set_question(char*);
@@ -25,4 +25,5 @@ class quiz {
 	
 	//for file IO
 	int number_of_elements();
+	
 };
