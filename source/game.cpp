@@ -12,6 +12,9 @@ using namespace std;
 #define LOG_TAG "Game"
 char log_msg[128];
 
+#define POINTS_ON_CORRECT_ANSWER	5
+#define POINTS_ON_WRONG_ANSWER		-1 
+
 int game_difficulty = 1;
 int game_score = 0;
 
@@ -57,9 +60,9 @@ extern int update_score(int type) {
 			 1 - Correct Answer*/
 	logi(LOG_TAG,"Updating Score");
 	if(type)
-		game_score += 25;
+		game_score += POINTS_ON_CORRECT_ANSWER;
 	else
-		game_score -= 10;
+		game_score += POINTS_ON_WRONG_ANSWER;
 }
 
 void sort_questions() {
