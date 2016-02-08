@@ -1,5 +1,5 @@
 #include <iostream.h>
-#include <fstream>
+#include <fstream.h>
 #include <conio.h>
 #include <stdio.h>
 #include <time.h>
