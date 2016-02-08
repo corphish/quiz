@@ -137,8 +137,8 @@ int used_id_count = 0, used_q_count = 0;
 
 void sort_questions();
 
-quiz game_quiz[60];
-quiz new_quiz[60];
+quiz huge* game_quiz[60];
+quiz huge* new_quiz[60];
 
 int check_and_set_difficulty (int new_difficulty) {
 	if(new_difficulty == 1) {
